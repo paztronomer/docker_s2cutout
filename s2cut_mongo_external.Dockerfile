@@ -42,8 +42,6 @@ RUN mkdir -p /tmp/s2geometry/build \
     && make install \
     && make clean
 
-CMD ["sleep", "3600"]
-
 
 
 
@@ -98,6 +96,7 @@ COPY --from=baselayer /usr/local/lib/s2/lib /usr/local/lib
 
 # CREATE path for MONGODB
 RUN mkdir -p /data/db
+RUN mkdir -p /data/configdb
 
 # LOCAL USER
 ENV USER des
@@ -108,10 +107,11 @@ ENV HOME /home/des
 RUN useradd --create-home --shell /bin/bash ${USER} --uid 1001 \
     && echo "des:des" | chpasswd \
     && adduser ${USER} sudo
-WORKDIR ${HOME}
 RUN mkdir ${HOME}/s2des
 RUN mkdir ${HOME}/s2des/external
 RUN chown -R ${USER}:${USER} ${HOME}
+# Set WORKDIR to the mounted volume
+WORKDIR ${HOME}/s2des/external
 USER ${USER}
 ENV SHELL /bin/bash
 ENV TERM xterm

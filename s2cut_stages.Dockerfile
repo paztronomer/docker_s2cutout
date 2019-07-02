@@ -42,8 +42,6 @@ RUN mkdir -p /tmp/s2geometry/build \
     && make install \
     && make clean
 
-CMD ["sleep", "3600"]
-
 
 
 

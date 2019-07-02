@@ -37,4 +37,5 @@ Containers:
     - `python modif_s2se_9.py --csv test_radec.csv --return_list`: doesn't work, when asking for non-existent position it fails.
     - `python modif_s2se_9.py --ra 54 --dec -28 --make_fits --xsize 0.9 --ysize 1.1 --outdir outdir_test`: worked
         * EXTNAME: 'WGT', Error: WCS should contain celestial component
+    - `python modif_s2se_9.py --ra 70 --dec -47 --xsize 180 --ysize 180 --make_fits`: test the region with lower resolution
 2) from above, I need to first check: return list validity and make fits with different sizes/bands.
